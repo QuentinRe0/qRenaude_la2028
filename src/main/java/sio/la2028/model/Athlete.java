@@ -4,6 +4,8 @@
  */
 package sio.la2028.model;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author zakina
@@ -13,12 +15,22 @@ public class Athlete {
     private int id;
     private String nom ;
     private Pays pays ;
+    private String prenom ;
+    private LocalDate date_naiss ;
     public Athlete() {
     }
 
     public Athlete(int id, String nom) {
         this.id = id;
         this.nom = nom;
+    }
+
+    public Athlete(int id, String nom, Pays pays, String prenom, LocalDate date_naiss) {
+        this.id = id;
+        this.nom = nom;
+        this.pays = pays;
+        this.prenom = prenom;
+        this.date_naiss = date_naiss;
     }
 
     public int getId() {
@@ -44,6 +56,20 @@ public class Athlete {
     public void setPays(Pays pays) {
         this.pays = pays;
     }
-    
-    
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public LocalDate getDate_naiss() {
+        return date_naiss;
+    }
+
+    public void setDate_naiss(LocalDate date_naiss) {
+        this.date_naiss = date_naiss;
+    }
 }

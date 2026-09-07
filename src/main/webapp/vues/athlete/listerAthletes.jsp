@@ -8,6 +8,7 @@
 <%@page import="sio.la2028.model.Athlete"%>
 <%@page import="sio.la2028.model.Pays"%>
 <%@page import="java.util.ArrayList"%>
+<%@ page import="java.time.format.DateTimeFormatter" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -91,3 +92,4 @@
        </div>
   
 </html>
+

@@ -6,6 +6,8 @@ package sio.la2028.model;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 /**
  *
@@ -18,6 +20,7 @@ public class Athlete {
     private Pays pays ;
     private String prenom ;
     private LocalDate dateNaiss ;
+    private LocalDate dateNaissfr ;
     private int age;
     public Athlete() {
     }
@@ -84,5 +87,13 @@ public class Athlete {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getDateNaissfr() {
+        if (this.getDateNaiss() == null) {
+            return "";
+        }
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return this.getDateNaiss().format(formatter);
     }
 }

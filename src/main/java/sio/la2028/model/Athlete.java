@@ -16,7 +16,7 @@ public class Athlete {
     private String nom ;
     private Pays pays ;
     private String prenom ;
-    private LocalDate date_naiss ;
+    private LocalDate dateNaiss ;
     public Athlete() {
     }
 
@@ -30,7 +30,7 @@ public class Athlete {
         this.nom = nom;
         this.pays = pays;
         this.prenom = prenom;
-        this.date_naiss = date_naiss;
+        this.dateNaiss = dateNaiss;
     }
 
     public int getId() {
@@ -65,11 +65,11 @@ public class Athlete {
         this.prenom = prenom;
     }
 
-    public LocalDate getDate_naiss() {
-        return date_naiss;
+    public LocalDate getDateNaiss() {
+        return dateNaiss;
     }
 
-    public void setDate_naiss(LocalDate date_naiss) {
-        this.date_naiss = date_naiss;
+    public void setDateNaiss(LocalDate dateNaiss) {
+        this.dateNaiss = dateNaiss;
     }
 }

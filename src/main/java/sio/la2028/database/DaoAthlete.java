@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import sio.la2028.model.Athlete;
 import sio.la2028.model.Pays;
@@ -26,7 +27,7 @@ public class DaoAthlete {
         
         ArrayList<Athlete> lesAthletes = new ArrayList<Athlete>();
         try{
-            requeteSql = cnx.prepareStatement("select a.id as a_id, a.nom as a_nom,  p.id as p_id, p.nom as p_nom " +
+            requeteSql = cnx.prepareStatement("select a.id as a_id, a.prenom as a_prenom, a.nom as a_nom, a.date_naiss as a_dateNaiss, p.id as p_id, p.nom as p_nom " +
                          " from athlete a inner join pays p " +
                          " on a.pays_id = p.id ");
             //System.out.println("REQ="+ requeteSql);
@@ -37,6 +38,8 @@ public class DaoAthlete {
                 Athlete a = new Athlete();
                    a.setId(resultatRequete.getInt("a_id"));
                    a.setNom(resultatRequete.getString("a_nom"));
+                   a.setPrenom(resultatRequete.getString("a_prenom"));
+                   a.setDateNaiss(resultatRequete.getObject("a_dateNaiss", LocalDate.class));
                     
                    Pays p = new Pays();
                    p.setId(resultatRequete.getInt("p_id"));

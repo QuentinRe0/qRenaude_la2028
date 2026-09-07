@@ -5,6 +5,7 @@
 package sio.la2028.model;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 /**
  *
@@ -17,6 +18,7 @@ public class Athlete {
     private Pays pays ;
     private String prenom ;
     private LocalDate dateNaiss ;
+    private int age;
     public Athlete() {
     }
 
@@ -71,5 +73,16 @@ public class Athlete {
 
     public void setDateNaiss(LocalDate dateNaiss) {
         this.dateNaiss = dateNaiss;
+    }
+
+    public int getAge() {
+        if (this.dateNaiss == null) {
+            return 0;
+        }
+            return Period.between(this.dateNaiss, LocalDate.now()).getYears();
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 }

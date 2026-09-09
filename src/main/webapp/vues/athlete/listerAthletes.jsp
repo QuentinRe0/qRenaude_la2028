@@ -74,7 +74,7 @@
                                 out.println("</a></td>");;
 
                                 out.println("<td>");
-                                out.println(a.getDateNaiss());
+                                out.println(a.getDateNaissfr());
                                 out.println("Âge:("+a.getAge()+")");
                                 out.println("</td>");
                            

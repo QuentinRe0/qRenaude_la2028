@@ -27,8 +27,10 @@ public class DaoAthlete {
         
         ArrayList<Athlete> lesAthletes = new ArrayList<Athlete>();
         try{
-            requeteSql = cnx.prepareStatement("select a.id as a_id, a.prenom as a_prenom, a.nom as a_nom, a.date_naiss as a_dateNaiss, p.id as p_id, p.nom as p_nom " +
-                         " from athlete a inner join pays p " +
+            requeteSql = cnx.prepareStatement("select a.id as a_id, a.prenom as a_prenom, a.nom as a_nom, a.date_naiss as a_dateNaiss, p.id as p_id, p.nom as p_nom,  s.id as s_id, s.nom as s_nom " +
+                        " from athlete a inner join sport s " +
+                        " on a.sport_id = s.id " +
+                        " from athlete a inner join pays p " +
                          " on a.pays_id = p.id ");
             //System.out.println("REQ="+ requeteSql);
             resultatRequete = requeteSql.executeQuery();
@@ -62,9 +64,11 @@ public class DaoAthlete {
         
         Athlete a = new Athlete();
         try{
-            requeteSql = cnx.prepareStatement("select a.id as a_id, a.prenom as a_prenom, a.nom as a_nom, a.date_naiss as a_dateNaiss,   p.id as p_id, p.nom as p_nom " +
+            requeteSql = cnx.prepareStatement("select a.id as a_id, a.prenom as a_prenom, a.nom as a_nom, a.date_naiss as a_dateNaiss,   p.id as p_id, p.nom as p_nom,  s.id as s_id, s.nom as s_nom " +
                          " from athlete a inner join pays p " +
-                         " on a.pays_id = p.id " + 
+                         " on a.pays_id = p.id " +
+                    " from athlete a inner join sport s " +
+                    " on a.sport_id = s.id " +
                          " where a.id = ? ");
             //System.out.println("REQ="+ requeteSql);
             requeteSql.setInt(1, idAthlete);

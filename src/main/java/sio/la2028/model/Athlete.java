@@ -22,7 +22,7 @@ public class Athlete {
     private LocalDate dateNaiss ;
     private LocalDate dateNaissfr ;
     private int age;
-    private  Sport sport
+    private  Sport sport;
     public Athlete() {
     }
 

@@ -35,7 +35,7 @@ public class DaoSport {
         }
         catch (SQLException e){
             e.printStackTrace();
-            System.out.println("La requête de getLespayss e généré une erreur");
+            System.out.println("La requête de getLesSports e généré une erreur");
         }
         return lesSports;
 

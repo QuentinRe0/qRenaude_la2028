@@ -47,7 +47,7 @@ public class DaoAthlete {
                    Pays p = new Pays();
                    p.setId(resultatRequete.getInt("p_id"));
                    p.setNom(resultatRequete.getString("p_nom"));
-                
+
                     a.setPays(p);
 
                 Sport s = new Sport();
@@ -55,7 +55,8 @@ public class DaoAthlete {
                 s.setNom(resultatRequete.getString("s_nom"));
 
                 a.setSport(s);
-                
+
+
                 lesAthletes.add(a);
             }
            

@@ -8,7 +8,7 @@ public class Sport {
     private ArrayList<Athlete> lesAthletes ;
 
 
-    public Sport(int id, String nom, ArrayList<Athlete> lesAthletes) {
+    public Sport() {
         this.id = id;
         this.nom = nom;
     }

@@ -80,7 +80,7 @@
                                 out.println("</td>");
 
                                 out.println("<td>");
-                                out.println(a.getSport());
+                                out.println(a.getSport().getNom());
                                 out.println("</td>");
                            
                                 out.println("<td>");

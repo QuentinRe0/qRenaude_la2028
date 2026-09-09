@@ -33,6 +33,9 @@
                     <td>Prénom: </td><td><%  out.println(a.getPrenom());%></td>
                 </tr>
                 <tr>
+                    <td>Sport: </td><td><%  out.println(a.getSport().getNom());%></td>
+                </tr>
+                <tr>
                     <td>Date de Naissance: </td><td><%  out.println(a.getDateNaissfr());%></td>
                 </tr>
                 <tr>

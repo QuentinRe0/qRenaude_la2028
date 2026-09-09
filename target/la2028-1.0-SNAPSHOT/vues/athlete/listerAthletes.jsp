@@ -53,6 +53,7 @@
                         <th>prénom</th>
                         <th>nom</th>
                         <th>date de naissance</th>
+                        <th>sport</th>
                         <th>pays</th>                
                     </tr>
                 </thead>
@@ -76,6 +77,10 @@
                                 out.println("<td>");
                                 out.println(a.getDateNaissfr());
                                 out.println("Âge:("+a.getAge()+")");
+                                out.println("</td>");
+
+                                out.println("<td>");
+                                out.println(a.getSport().getNom());
                                 out.println("</td>");
                            
                                 out.println("<td>");

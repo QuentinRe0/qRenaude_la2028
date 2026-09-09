@@ -22,6 +22,7 @@ public class Athlete {
     private LocalDate dateNaiss ;
     private LocalDate dateNaissfr ;
     private int age;
+    private  Sport sport;
     public Athlete() {
     }
 
@@ -34,6 +35,7 @@ public class Athlete {
         this.id = id;
         this.nom = nom;
         this.pays = pays;
+        this.sport = sport;
         this.prenom = prenom;
         this.dateNaiss = dateNaiss;
     }
@@ -96,4 +98,13 @@ public class Athlete {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return this.getDateNaiss().format(formatter);
     }
+
+    public Sport getSport() {
+        return sport;
+    }
+
+    public void setSport(Sport sport) {
+        this.sport = sport;
+    }
 }
+

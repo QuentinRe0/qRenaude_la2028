@@ -12,6 +12,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import sio.la2028.model.Athlete;
 import sio.la2028.model.Pays;
+import sio.la2028.model.Sport;
 
 /**
  *
@@ -27,8 +28,10 @@ public class DaoAthlete {
         
         ArrayList<Athlete> lesAthletes = new ArrayList<Athlete>();
         try{
-            requeteSql = cnx.prepareStatement("select a.id as a_id, a.prenom as a_prenom, a.nom as a_nom, a.date_naiss as a_dateNaiss, p.id as p_id, p.nom as p_nom " +
-                         " from athlete a inner join pays p " +
+            requeteSql = cnx.prepareStatement("select a.id as a_id, a.prenom as a_prenom, a.nom as a_nom, a.date_naiss as a_dateNaiss, p.id as p_id, p.nom as p_nom,  s.id as s_id, s.nom as s_nom " +
+                        " from athlete a inner join sport s " +
+                        " on a.sport_id = s.id " +
+                        " inner join pays p " +
                          " on a.pays_id = p.id ");
             //System.out.println("REQ="+ requeteSql);
             resultatRequete = requeteSql.executeQuery();
@@ -44,9 +47,16 @@ public class DaoAthlete {
                    Pays p = new Pays();
                    p.setId(resultatRequete.getInt("p_id"));
                    p.setNom(resultatRequete.getString("p_nom"));
-                
+
                     a.setPays(p);
-                
+
+                Sport s = new Sport();
+                s.setId(resultatRequete.getInt("s_id"));
+                s.setNom(resultatRequete.getString("s_nom"));
+
+                a.setSport(s);
+
+
                 lesAthletes.add(a);
             }
            
@@ -62,9 +72,11 @@ public class DaoAthlete {
         
         Athlete a = new Athlete();
         try{
-            requeteSql = cnx.prepareStatement("select a.id as a_id, a.prenom as a_prenom, a.nom as a_nom, a.date_naiss as a_dateNaiss,   p.id as p_id, p.nom as p_nom " +
+            requeteSql = cnx.prepareStatement("select a.id as a_id, a.prenom as a_prenom, a.nom as a_nom, a.date_naiss as a_dateNaiss,   p.id as p_id, p.nom as p_nom,  s.id as s_id, s.nom as s_nom " +
                          " from athlete a inner join pays p " +
-                         " on a.pays_id = p.id " + 
+                         " on a.pays_id = p.id " +
+                    " inner join sport s " +
+                    " on a.sport_id = s.id " +
                          " where a.id = ? ");
             //System.out.println("REQ="+ requeteSql);
             requeteSql.setInt(1, idAthlete);
@@ -82,6 +94,12 @@ public class DaoAthlete {
                    p.setNom(resultatRequete.getString("p_nom"));
                 
                     a.setPays(p);
+
+                Sport s = new Sport();
+                s.setId(resultatRequete.getInt("s_id"));
+                s.setNom(resultatRequete.getString("s_nom"));
+
+                a.setSport(s);
                 
             }
            

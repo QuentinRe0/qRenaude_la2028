@@ -29,6 +29,15 @@
             <tr>
                 <td>Id: </td><td><%  out.println(a.getId());%></td>
             </tr>
+                <tr>
+                    <td>Prénom: </td><td><%  out.println(a.getPrenom());%></td>
+                </tr>
+                <tr>
+                    <td>Date de Naissance: </td><td><%  out.println(a.getDateNaissfr());%></td>
+                </tr>
+                <tr>
+                    <td>Âge: </td><td><%  out.println(a.getAge());%></td>
+                </tr>
             <tr>
                 <td>Pays : </td><td><%  out.println(a.getPays().getNom());%></td>
             </tr>

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Epreuve {
     private int id;
     private String nom;
-    private ArrayList<Sport> lesSports;
+    private Sport Sport;
 
     public Epreuve() {
     }
@@ -23,9 +23,6 @@ public class Epreuve {
         return nom;
     }
 
-    public ArrayList<Sport> getLesSports() {
-        return lesSports;
-    }
 
     public void setId(int id) {
         this.id = id;
@@ -35,18 +32,16 @@ public class Epreuve {
         this.nom = nom;
     }
 
-    public void setLesSports(ArrayList<Sport> lesSports) {
-        this.lesSports = lesSports;
+    public Sport getSport() {
+        return Sport;
     }
 
-    public void addSport(Sport s){
-
-        if (lesSports == null){
-            lesSports = new ArrayList<Sport>();
-        }
-        lesSports.add(s);
+    public void setSport(Sport sport) {
+        Sport = sport;
     }
+
 }
+
 
 
 

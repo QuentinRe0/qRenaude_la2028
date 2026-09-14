@@ -36,10 +36,10 @@
 </nav>
 <body>
 <div class="container special">
-  <h2 class="h2">Liste des pays</h2>
+  <h2 class="h2">Liste des athletes par pays</h2>
   <div class="table-responsive">
       <%
-                    ArrayList<Pays> lesPays = (ArrayList)request.getAttribute("pLesPays");
+                    ArrayList<Athlete> lesAthlete = (ArrayList)request.getAttribute("pLesAthlete");
                 %>
     <table class="table table-striped table-sm">
       <thead>
@@ -51,19 +51,12 @@
       <tbody>
       <tr>
         <%
-          for (Pays p : lesPays)
+          for (Athlete a : lesAthlete)
           {
             out.println("<tr><td>");
-            out.println(p.getId());
+            out.println(a.getId());
             out.println("</td>");
 
-            out.println("<td><a href ='../ServletPays/consulter?idPays="+ p.getId()+ "'>");
-            out.println(p.getNom());
-            out.println("</a></td>");;
-
-            out.println("<td><a href ='../ServletPays/listerAthleteByPays?idPays="+ p.getId()+ "'>");
-            out.println("Voir les Athlete du pays");
-            out.println("</a></td>");;
 
           }
         %>

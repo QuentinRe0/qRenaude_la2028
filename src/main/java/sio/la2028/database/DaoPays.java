@@ -81,10 +81,12 @@ public class DaoPays {
 
     public static Pays getAthleteByPaysId(Connection cnx, int idPays){
 
-        Athlete a = new Athlete();
+        Pays p = new Pays();
         try{
-            requeteSql = cnx.prepareStatement("select * from athlete"+
-                    " where pays_id = ? ");
+            requeteSql = cnx.prepareStatement("select * from athlete "+
+                    "athlete a inner join pays p " +
+                    " on a.pays_id = p.id " +
+                    " where p.id = ? ");
 
             //System.out.println("REQ="+ requeteSql);
             requeteSql.setInt(1,idPays);
@@ -92,11 +94,18 @@ public class DaoPays {
 
             if (resultatRequete.next()){
 
-                a.setId(resultatRequete.getInt("id"));
+                p.setId(resultatRequete.getInt("id"));
+
+                p.setNom(resultatRequete.getString("nom"));
+
+
+                Athlete a = new Athlete();
+                a.setId(resultatRequete.getInt("p_id"));
                 a.setPrenom(resultatRequete.getString("prenom"));
-                a.setNom(resultatRequete.getString("nom"));
+                a.setNom(resultatRequete.getString("p_nom"));
                 a.setDateNaiss(resultatRequete.getObject("dateNaiss", LocalDate.class));
 
+                a.setPays(p);
 
 
             }
@@ -106,7 +115,7 @@ public class DaoPays {
             e.printStackTrace();
             System.out.println("La requête de getLesPompiers e généré une erreur");
         }
-        return a;
+        return p;
     }
     
 }

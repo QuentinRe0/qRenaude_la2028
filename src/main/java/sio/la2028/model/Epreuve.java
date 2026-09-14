@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Epreuve {
     private int id;
     private String nom;
-    private Sport Sport;
+    private  Sport sport;
 
     public Epreuve() {
     }
@@ -13,6 +13,12 @@ public class Epreuve {
     public Epreuve(int id, String nom) {
         this.id = id;
         this.nom = nom;
+    }
+
+    public Epreuve(int id, String nom, Sport sport) {
+        this.id = id;
+        this.nom = nom;
+        this.sport = sport;
     }
 
     public int getId() {
@@ -33,12 +39,13 @@ public class Epreuve {
     }
 
     public Sport getSport() {
-        return Sport;
+        return sport;
     }
 
     public void setSport(Sport sport) {
-        Sport = sport;
+        this.sport = sport;
     }
+
 
 }
 

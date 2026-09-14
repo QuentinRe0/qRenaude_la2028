@@ -44,6 +44,10 @@
         <servlet-name>ServletPays</servlet-name>
         <url-pattern>/ServletPays/consulter</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletPays</servlet-name>
+        <url-pattern>/ServletPays/listerAthleteByPays</url-pattern>
+    </servlet-mapping>
 
     <session-config>
         <session-timeout>

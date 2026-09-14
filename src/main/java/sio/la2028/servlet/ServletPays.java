@@ -98,6 +98,14 @@ public class ServletPays extends HttpServlet {
             getServletContext().getRequestDispatcher("/vues/pays/consulterPays.jsp").forward(request, response);
         }
 
+        if (url.equals("/la2028/ServletPays/listerAthleteByPays")) {
+            int idPays = Integer.parseInt((String) request.getParameter("idPays"));
+            Pays p = DaoPays.getPaysById(cnx, idPays);
+            request.setAttribute("pAtPays", p);
+            //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );
+            getServletContext().getRequestDispatcher("/vues/pays/listerAthleteById.jsp").forward(request, response);
+        }
+
 
     }
 

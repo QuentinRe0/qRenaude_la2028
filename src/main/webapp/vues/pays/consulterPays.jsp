@@ -23,5 +23,8 @@
   <tr>
     <td>Id: </td><td><%  out.println(p.getId());%></td>
   </tr>
+  <tr>
+    <td>Code: </td><td><%  out.println(p.getCode());%></td>
+  </tr>
 </table>
 </html>

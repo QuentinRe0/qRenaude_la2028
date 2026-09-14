@@ -57,7 +57,7 @@
                         out.println("</td>");
 
 
-                        out.println("<tr><td>");
+                        out.println("<td>");
                         out.println(e.getNom());
                         out.println("</td>");;
 

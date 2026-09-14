@@ -57,9 +57,9 @@
             out.println(p.getId());
             out.println("</td>");
 
-            out.println("<td><a href ='../ServletPays/consulter?idPays=\"+ p.getId()+ \"'>");
+            out.println("<td><a href ='../ServletPays/consulter?idPays="+ p.getId()+ "'>");
             out.println(p.getNom());
-            out.println("</td></a>");;
+            out.println("</a></td>");;
 
           }
         %>

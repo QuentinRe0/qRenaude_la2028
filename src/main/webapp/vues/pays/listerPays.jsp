@@ -61,6 +61,10 @@
             out.println(p.getNom());
             out.println("</a></td>");;
 
+            out.println("<td><a href ='../ServletPays/listerAthleteByPays?idPays="+ p.getId()+ "'>");
+            out.println("Voir les Athlete du pays");
+            out.println("</a></td>");;
+
           }
         %>
       </tr>

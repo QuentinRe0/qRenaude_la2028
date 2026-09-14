@@ -84,7 +84,7 @@ public class DaoPays {
         Pays p = new Pays();
         try{
             requeteSql = cnx.prepareStatement("select * from athlete "+
-                    "athlete a inner join pays p " +
+                    "a inner join pays p " +
                     " on a.pays_id = p.id " +
                     " where p.id = ? ");
 

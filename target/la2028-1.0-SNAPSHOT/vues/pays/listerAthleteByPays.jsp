@@ -39,7 +39,7 @@
   <h2 class="h2">Liste des athletes par pays</h2>
   <div class="table-responsive">
       <%
-                    ArrayList<Athlete> lesAthlete = (ArrayList)request.getAttribute("pLesAthlete");
+                    ArrayList<Pays> lesPays = (ArrayList)request.getAttribute("pLesPays");
                 %>
     <table class="table table-striped table-sm">
       <thead>
@@ -51,10 +51,10 @@
       <tbody>
       <tr>
         <%
-          for (Athlete a : lesAthlete)
+          for (Pays p : lesPays)
           {
             out.println("<tr><td>");
-            out.println(a.getId());
+            out.println(p.getLesAthletes());
             out.println("</td>");
 
 

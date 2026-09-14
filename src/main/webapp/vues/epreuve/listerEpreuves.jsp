@@ -1,9 +1,6 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="sio.la2028.model.Athlete"%>
-<%@page import="sio.la2028.model.Pays"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page import="java.time.format.DateTimeFormatter" %>
 <%@ page import="sio.la2028.model.Epreuve" %>
 <!DOCTYPE html>
 <html>
@@ -31,7 +28,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <a  href ='../ServletAthlete/lister' class="navbar-brand" href=".">Système de gestion des épreuves</a>
+            <a  href ='../ServletEpreuve/lister' class="navbar-brand" href=".">Système de gestion des épreuves</a>
         </div>
     </div>
 </nav>

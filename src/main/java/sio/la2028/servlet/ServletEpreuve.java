@@ -12,13 +12,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import sio.la2028.database.DaoAthlete;
 import sio.la2028.database.DaoEpreuve;
-import sio.la2028.database.DaoPays;
-import sio.la2028.form.FormAthlete;
-import sio.la2028.model.Athlete;
 import sio.la2028.model.Epreuve;
-import sio.la2028.model.Pays;
+
 
 
 public class ServletEpreuve extends HttpServlet {
@@ -35,7 +31,7 @@ public class ServletEpreuve extends HttpServlet {
         try {
             System.out.println("INIT SERVLET=" + cnx.getSchema());
         } catch (SQLException ex) {
-            Logger.getLogger(sio.la2028.servlet.ServletAthlete.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(sio.la2028.servlet.ServletEpreuve.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -91,4 +87,12 @@ public class ServletEpreuve extends HttpServlet {
 
 
     }
+
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
 }
+
+

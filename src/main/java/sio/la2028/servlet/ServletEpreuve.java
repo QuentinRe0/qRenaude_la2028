@@ -86,7 +86,7 @@ public class ServletEpreuve extends HttpServlet {
             ArrayList<Epreuve> lesEpreuves = DaoEpreuve.getLesEpreuves(cnx);
             request.setAttribute("pLesEpreuves", lesEpreuves);
             //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );
-            getServletContext().getRequestDispatcher("/vues/athlete/listerEpreuves.jsp").forward(request, response);
+            getServletContext().getRequestDispatcher("/vues/epreuve/listerEpreuves.jsp").forward(request, response);
         }
 
 

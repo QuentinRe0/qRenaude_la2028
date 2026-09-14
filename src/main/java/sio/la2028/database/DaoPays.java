@@ -56,7 +56,7 @@ public class DaoPays {
         Pays p = new Pays();
         try{
             requeteSql = cnx.prepareStatement("select * from pays"+
-                    " where a.id = ? ");
+                    " where id = ? ");
 
             //System.out.println("REQ="+ requeteSql);
             requeteSql.setInt(1,idPays);
@@ -66,6 +66,7 @@ public class DaoPays {
 
                 p.setId(resultatRequete.getInt("id"));
                 p.setNom(resultatRequete.getString("nom"));
+                p.setCode(resultatRequete.getString("code"));
 
 
             }

@@ -40,7 +40,7 @@
   <h2 class="h2">Liste des sports</h2>
   <div class="table-responsive">
       <%
-                    ArrayList<Sport> lesSports = (ArrayList)request.getAttribute("pSports");
+                    ArrayList<Sport> lesSports = (ArrayList)request.getAttribute("pLesSports");
                 %>
     <table class="table table-striped table-sm">
       <thead>
@@ -58,7 +58,7 @@
             out.println(s.getId());
             out.println("</td>");
 
-            out.println("<tr><td>");
+            out.println("<td>");
             out.println(s.getNom());
             out.println("</td>");
           }

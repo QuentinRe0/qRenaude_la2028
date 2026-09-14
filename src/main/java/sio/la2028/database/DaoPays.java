@@ -8,9 +8,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
+import sio.la2028.model.Athlete;
 import sio.la2028.model.Pays;
+import sio.la2028.model.Sport;
 
 /**
  *
@@ -46,6 +49,33 @@ public class DaoPays {
         }
         return lesPays;
         
+    }
+
+    public static Pays getPaysById(Connection cnx, int idPays){
+
+        Pays p = new Pays();
+        try{
+            requeteSql = cnx.prepareStatement("select * from pays"+
+                    " where a.id = ? ");
+
+            //System.out.println("REQ="+ requeteSql);
+            requeteSql.setInt(1,idPays);
+            resultatRequete = requeteSql.executeQuery();
+
+            if (resultatRequete.next()){
+
+                p.setId(resultatRequete.getInt("id"));
+                p.setNom(resultatRequete.getString("nom"));
+
+
+            }
+
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+            System.out.println("La requête de getLesPompiers e généré une erreur");
+        }
+        return p;
     }
     
 }

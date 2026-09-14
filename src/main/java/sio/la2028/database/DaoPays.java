@@ -78,5 +78,35 @@ public class DaoPays {
         }
         return p;
     }
+
+    public static Pays getAthleteByPaysId(Connection cnx, int idPays){
+
+        Athlete a = new Athlete();
+        try{
+            requeteSql = cnx.prepareStatement("select * from athlete"+
+                    " where pays_id = ? ");
+
+            //System.out.println("REQ="+ requeteSql);
+            requeteSql.setInt(1,idPays);
+            resultatRequete = requeteSql.executeQuery();
+
+            if (resultatRequete.next()){
+
+                a.setId(resultatRequete.getInt("id"));
+                a.setPrenom(resultatRequete.getString("prenom"));
+                a.setNom(resultatRequete.getString("nom"));
+                a.setDateNaiss(resultatRequete.getObject("dateNaiss", LocalDate.class));
+
+
+
+            }
+
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+            System.out.println("La requête de getLesPompiers e généré une erreur");
+        }
+        return a;
+    }
     
 }

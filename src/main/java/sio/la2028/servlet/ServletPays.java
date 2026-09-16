@@ -102,6 +102,8 @@ public class ServletPays extends HttpServlet {
             int idPays = Integer.parseInt((String) request.getParameter("idPays"));
             Pays p = DaoPays.getPaysById(cnx, idPays);
             request.setAttribute("pAtPays", p);
+            ArrayList<Athlete> lesAthletes = DaoPays.getAthleteByPaysId(cnx, idPays);
+            request.setAttribute("pLesAthletes", lesAthletes);
             //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );
             getServletContext().getRequestDispatcher("/vues/pays/listerAthleteByPays.jsp").forward(request, response);
         }

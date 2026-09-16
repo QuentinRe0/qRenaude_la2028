@@ -39,22 +39,38 @@
   <h2 class="h2">Liste des athletes par pays</h2>
   <div class="table-responsive">
       <%
-                    ArrayList<Pays> lesPays = (ArrayList)request.getAttribute("pLesPays");
+                    Pays p = (Pays)request.getAttribute("pAtPays");
+                    ArrayList<Athlete> lesAthletes = (ArrayList)request.getAttribute("pLesAthletes");
                 %>
     <table class="table table-striped table-sm">
       <thead>
       <tr>
         <th>id</th>
         <th>nom</th>
+        <th>prenom</th>
+        <th>date de naissance</th>
       </tr>
       </thead>
       <tbody>
       <tr>
         <%
-          for (Pays p : lesPays)
+          for (Athlete a : lesAthletes)
+
           {
             out.println("<tr><td>");
-            out.println(p.getLesAthletes());
+            out.println(a.getId());
+            out.println("</td>");
+
+            out.println("<td>");
+            out.println(a.getPrenom());
+            out.println("</td>");
+
+            out.println("<td>");
+            out.println(a.getNom());
+            out.println("</td>");
+
+            out.println("<td>");
+            out.println(a.getDateNaissfr());
             out.println("</td>");
 
 

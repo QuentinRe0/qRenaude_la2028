@@ -79,11 +79,11 @@ public class DaoPays {
         return p;
     }
 
-    public static Pays getAthleteByPaysId(Connection cnx, int idPays){
+    public static ArrayList<Athlete> getAthleteByPaysId(Connection cnx, int idPays){
 
-        Pays p = new Pays();
+        ArrayList<Athlete> lesAthletes = new ArrayList<>();
         try{
-            requeteSql = cnx.prepareStatement("select * from athlete "+
+            requeteSql = cnx.prepareStatement("select a.id as a_id, a.prenom as a_prenom, a.nom as a_nom, a.date_naiss as a_dateNaiss,   p.id as p_id, p.nom as p_nom from athlete "+
                     "a inner join pays p " +
                     " on a.pays_id = p.id " +
                     " where p.id = ? ");
@@ -92,21 +92,14 @@ public class DaoPays {
             requeteSql.setInt(1,idPays);
             resultatRequete = requeteSql.executeQuery();
 
-            if (resultatRequete.next()){
-
-                p.setId(resultatRequete.getInt("id"));
-
-                p.setNom(resultatRequete.getString("nom"));
-
-
+            while (resultatRequete.next()){
                 Athlete a = new Athlete();
-                a.setId(resultatRequete.getInt("p_id"));
-                a.setPrenom(resultatRequete.getString("prenom"));
-                a.setNom(resultatRequete.getString("p_nom"));
-                a.setDateNaiss(resultatRequete.getObject("dateNaiss", LocalDate.class));
+                a.setId(resultatRequete.getInt("a_id"));
+                a.setPrenom(resultatRequete.getString("a_prenom"));
+                a.setNom(resultatRequete.getString("a_nom"));
+                a.setDateNaiss(resultatRequete.getObject("a_dateNaiss", LocalDate.class));
 
-                a.setPays(p);
-
+                lesAthletes.add(a);
 
             }
 
@@ -115,7 +108,7 @@ public class DaoPays {
             e.printStackTrace();
             System.out.println("La requête de getLesPompiers e généré une erreur");
         }
-        return p;
+        return lesAthletes;
     }
     
 }

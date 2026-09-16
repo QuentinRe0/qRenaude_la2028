@@ -61,6 +61,10 @@
             out.println("<td><a href ='../ServletSport/consulter?idSport="+ s.getId()+ "'>");
             out.println(s.getNom());
             out.println("</td>");
+
+            out.println("<td><a href ='../ServletSport/listerAthleteBySport?idSport="+ s.getId()+ "'>");
+            out.println("Voir les Athlete inscrit a ce sport");
+            out.println("</a></td>");
           }
         %>
       </tr>

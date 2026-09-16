@@ -1,12 +1,11 @@
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="sio.la2028.model.Athlete"%>
+<%@page import="sio.la2028.model.Pays"%>
+<%@page import="java.util.ArrayList"%>
+<%@ page import="java.time.format.DateTimeFormatter" %>
 <%@ page import="sio.la2028.model.Sport" %>
-<%@ page import="java.util.ArrayList" %><%--
-  Created by IntelliJ IDEA.
-  User: sio2
-  Date: 09/09/2026
-  Time: 11:26
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -28,43 +27,54 @@
   </style>
 </head>
 <body>
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
-      <a  href ='../ServletSport/lister' class="navbar-brand" href=".">Système de gestion des sports</a>
+      <a  href ='../ServletSport/lister' class="navbar-brand" href=".">Système de gestion des sport</a>
     </div>
   </div>
 </nav>
 <body>
 <div class="container special">
-  <h2 class="h2">Liste des sports</h2>
+  <h2 class="h2">Liste des athletes par sport</h2>
   <div class="table-responsive">
       <%
-                    ArrayList<Sport> lesSports = (ArrayList)request.getAttribute("pLesSports");
+                    Sport s = (Sport)request.getAttribute("pAtSport");
+                    ArrayList<Athlete> lesAthletes = (ArrayList)request.getAttribute("pLesAthletes");
                 %>
     <table class="table table-striped table-sm">
       <thead>
       <tr>
         <th>id</th>
         <th>nom</th>
+        <th>prenom</th>
+        <th>date de naissance</th>
       </tr>
       </thead>
       <tbody>
       <tr>
         <%
-          for (Sport s : lesSports)
+          for (Athlete a : lesAthletes)
+
           {
             out.println("<tr><td>");
-            out.println(s.getId());
+            out.println(a.getId());
             out.println("</td>");
 
-            out.println("<td><a href ='../ServletSport/consulter?idSport="+ s.getId()+ "'>");
-            out.println(s.getNom());
+            out.println("<td>");
+            out.println(a.getPrenom());
             out.println("</td>");
 
-            out.println("<td><a href ='../ServletSport/listerAthleteBySport?idSport="+ s.getId()+ "'>");
-            out.println("Voir les Athlete inscrit a ce sport");
-            out.println("</a></td>");
+            out.println("<td>");
+            out.println(a.getNom());
+            out.println("</td>");
+
+            out.println("<td>");
+            out.println(a.getDateNaissfr());
+            out.println("</td>");
+
+
           }
         %>
       </tr>
@@ -73,4 +83,6 @@
 </body>
 </div>
 </div>
+
 </html>
+

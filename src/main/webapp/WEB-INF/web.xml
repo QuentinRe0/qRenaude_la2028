@@ -23,6 +23,7 @@
         <url-pattern>/ServletAthlete/ajouter</url-pattern>
     </servlet-mapping>
     <servlet>
+
         <servlet-name>ServletSport</servlet-name>
         <servlet-class>sio.la2028.servlet.ServletSport</servlet-class>
     </servlet>
@@ -30,6 +31,24 @@
         <servlet-name>ServletSport</servlet-name>
         <url-pattern>/ServletSport/lister</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletPays</servlet-name>
+        <servlet-class>sio.la2028.servlet.ServletPays</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletPays</servlet-name>
+        <url-pattern>/ServletPays/lister</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletPays</servlet-name>
+        <url-pattern>/ServletPays/consulter</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletPays</servlet-name>
+        <url-pattern>/ServletPays/listerAthleteByPays</url-pattern>
+    </servlet-mapping>
+
     <session-config>
         <session-timeout>
             30

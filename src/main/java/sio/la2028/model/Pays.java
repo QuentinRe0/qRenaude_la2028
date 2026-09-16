@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class Pays {
     private int id;
     private String nom ;
+    private String code ;
     private ArrayList<Athlete> lesAthletes ;
 
     public Pays() {
@@ -21,6 +22,12 @@ public class Pays {
     public Pays(int id, String nom) {
         this.id = id;
         this.nom = nom;
+    }
+
+    public Pays(int id, String nom, String code) {
+        this.id = id;
+        this.nom = nom;
+        this.code = code;
     }
 
     public Pays(int id) {
@@ -58,5 +65,12 @@ public class Pays {
         }
         lesAthletes.add(a);
     }
-    
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
 }

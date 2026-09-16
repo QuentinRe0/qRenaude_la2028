@@ -6,6 +6,7 @@ public class Sport {
     private int id;
     private String nom ;
     private ArrayList<Athlete> lesAthletes ;
+    private ArrayList<Epreuve> lesEpreuves ;
 
 
     public Sport() {
@@ -43,6 +44,14 @@ public class Sport {
             lesAthletes = new ArrayList<Athlete>();
         }
         lesAthletes.add(a);
+    }
+
+    public ArrayList<Epreuve> getLesEpreuves() {
+        return lesEpreuves;
+    }
+
+    public void setLesEpreuves(ArrayList<Epreuve> lesEpreuves) {
+        this.lesEpreuves = lesEpreuves;
     }
 }
 

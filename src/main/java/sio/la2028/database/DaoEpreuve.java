@@ -88,6 +88,42 @@ public class DaoEpreuve {
         return e;
     }
 
+    public static ArrayList<Athlete> getAthleteByEpreuveId(Connection cnx, int idEpreuve){
+
+        ArrayList<Athlete> lesAthletes = new ArrayList<>();
+        try{
+            requeteSql = cnx.prepareStatement("select a.id as a_id, a.prenom as a_prenom, a.nom as a_nom, a.date_naiss as a_dateNaiss, s.id as s_id, s.nom as s_nom, e.id as e_id, e.nom as e_nom " +
+                    "from athlete a "+
+                    "inner join sport s " +
+                    "on a.sport_id = s.id " +
+                    "inner join epreuve e " +
+                    "on s.id = e.id_sport " +
+                    "where e.id = ? ");
+
+            //System.out.println("REQ="+ requeteSql);
+            requeteSql.setInt(1,idEpreuve);
+            resultatRequete = requeteSql.executeQuery();
+
+            while (resultatRequete.next()){
+
+                Athlete a = new Athlete();
+                a.setId(resultatRequete.getInt("a_id"));
+                a.setPrenom(resultatRequete.getString("a_prenom"));
+                a.setNom(resultatRequete.getString("a_nom"));
+                a.setDateNaiss(resultatRequete.getObject("a_dateNaiss", LocalDate.class));
+
+                lesAthletes.add(a);
+
+            }
+
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+            System.out.println("La requête de getLesPompiers e généré une erreur");
+        }
+        return lesAthletes;
+    }
+
             }
 
 

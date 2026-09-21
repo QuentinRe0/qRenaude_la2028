@@ -60,7 +60,7 @@
             out.println(s.getId());
             out.println("</td>");
 
-            out.println("<td>");
+            out.println("<td><a href ='../ServletSite/consulter?idSite="+ s.getId()+ "'>");
             out.println(s.getNom());
             out.println("</td>");
 

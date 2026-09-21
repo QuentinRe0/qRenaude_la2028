@@ -92,6 +92,8 @@ public class ServletEpreuve extends HttpServlet {
             int idEpreuve = Integer.parseInt((String)request.getParameter("idEpreuve"));
             Epreuve e = DaoEpreuve.getEpreuveById(cnx, idEpreuve);
             request.setAttribute("pEpreuve", e);
+            ArrayList<Athlete> lesAthletes = DaoEpreuve.getAthleteByEpreuveId(cnx, idEpreuve);
+            request.setAttribute("pLesAthletes", lesAthletes);
             //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );
             getServletContext().getRequestDispatcher("/vues/epreuve/consulterEpreuve.jsp").forward(request, response);
         }

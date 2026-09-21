@@ -96,7 +96,7 @@ public class ServletSite extends HttpServlet {
             ArrayList<Sport> lesSports = DaoSite.getSportBySiteId(cnx, idSite);
             request.setAttribute("pLesSports", lesSports);
             //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );
-            getServletContext().getRequestDispatcher("/vues/Site/consulterSite.jsp").forward(request, response);
+            getServletContext().getRequestDispatcher("/vues/site/consulterSite.jsp").forward(request, response);
         }
         
     }

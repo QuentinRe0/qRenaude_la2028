@@ -57,7 +57,7 @@
             out.println("</td>");
 
 
-            out.println("<td>");
+            out.println("<td><a href ='../ServletEpreuve/consulter?idEpreuve="+ e.getId()+ "'>");
             out.println(e.getNom());
             out.println("</td>");;
 

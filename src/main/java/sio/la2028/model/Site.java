@@ -8,7 +8,7 @@ public class Site {
     private String emplacement ;
     private ArrayList<Sport> lesSports ;
 
-    public Site(int id, String nom, String emplacement) {
+    public Site() {
         this.id = id;
         this.nom = nom;
         this.emplacement = emplacement;

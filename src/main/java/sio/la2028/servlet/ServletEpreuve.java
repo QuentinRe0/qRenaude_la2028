@@ -12,10 +12,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import sio.la2028.database.DaoAthlete;
 import sio.la2028.database.DaoEpreuve;
-import sio.la2028.database.DaoPays;
+import sio.la2028.model.Athlete;
 import sio.la2028.model.Epreuve;
-import sio.la2028.model.Pays;
 
 
 public class ServletEpreuve extends HttpServlet {
@@ -86,8 +87,9 @@ public class ServletEpreuve extends HttpServlet {
             getServletContext().getRequestDispatcher("/vues/epreuve/listerEpreuves.jsp").forward(request, response);
         }
 
-        if (url.equals("/la2028/ServletEpreuve/consulter")) {
-            int idEpreuve = Integer.parseInt((String) request.getParameter("idEpreuve"));
+        if(url.equals("/la2028/ServletEpreuve/consulter"))
+        {
+            int idEpreuve = Integer.parseInt((String)request.getParameter("idEpreuve"));
             Epreuve e = DaoEpreuve.getEpreuveById(cnx, idEpreuve);
             request.setAttribute("pEpreuve", e);
             //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );

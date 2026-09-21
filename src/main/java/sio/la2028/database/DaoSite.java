@@ -1,5 +1,6 @@
 package sio.la2028.database;
 
+import sio.la2028.model.Athlete;
 import sio.la2028.model.Site;
 import sio.la2028.model.Sport;
 
@@ -7,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class DaoSite {
@@ -40,6 +42,64 @@ public class DaoSite {
         }
         return lesSites;
 
+    }
+
+    public static Site getSiteById(Connection cnx, int idSite){
+
+        Site s = new Site();
+        try{
+            requeteSql = cnx.prepareStatement("select * from site"+
+                    " where id = ? ");
+
+            //System.out.println("REQ="+ requeteSql);
+            requeteSql.setInt(1,idSite);
+            resultatRequete = requeteSql.executeQuery();
+
+            if (resultatRequete.next()){
+
+                s.setId(resultatRequete.getInt("id"));
+                s.setNom(resultatRequete.getString("nom"));
+                s.setEmplacement(resultatRequete.getString("emplacement"));
+
+
+            }
+
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+            System.out.println("La requête de getLesPompiers e généré une erreur");
+        }
+        return s;
+    }
+
+    public static ArrayList<Sport> getSportBySiteId(Connection cnx, int idSite){
+
+        ArrayList<Sport> lesSports = new ArrayList<>();
+        try{
+            requeteSql = cnx.prepareStatement("select s.id as s_id, s.nom as s_nom "+
+                    " from sport s inner join site si " +
+                    " on s.site_id = si.id " +
+                    " where si.id = ? ");
+
+            //System.out.println("REQ="+ requeteSql);
+            requeteSql.setInt(1,idSite);
+            resultatRequete = requeteSql.executeQuery();
+
+            while (resultatRequete.next()){
+                Sport s = new Sport();
+                s.setId(resultatRequete.getInt("a_id"));
+                s.setNom(resultatRequete.getString("a_nom"));
+
+                lesSports.add(s);
+
+            }
+
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+            System.out.println("La requête de getLesPompiers e généré une erreur");
+        }
+        return lesSports;
     }
 
 }

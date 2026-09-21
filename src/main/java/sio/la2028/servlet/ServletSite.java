@@ -12,15 +12,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import sio.la2028.database.DaoAthlete;
-import sio.la2028.database.DaoPays;
-import sio.la2028.database.DaoSite;
-import sio.la2028.database.DaoSport;
-import sio.la2028.form.FormAthlete;
-import sio.la2028.model.Athlete;
-import sio.la2028.model.Pays;
-import sio.la2028.model.Site;
-import sio.la2028.model.Sport;
+
+import sio.la2028.database.*;
+import sio.la2028.model.*;
 
 /**
  *
@@ -41,7 +35,7 @@ public class ServletSite extends HttpServlet {
         try {
             System.out.println("INIT SERVLET=" + cnx.getSchema());
         } catch (SQLException ex) {
-            Logger.getLogger(ServletAthlete.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletSport.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -62,7 +56,7 @@ public class ServletSite extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ServletAthlete</title>");
+            out.println("<title>Servlet ServletSport</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ServletSport at " + request.getContextPath() + "</h1>");
@@ -86,12 +80,24 @@ public class ServletSite extends HttpServlet {
 
         String url = request.getRequestURI();
 
-        // Récup et affichage les athletes
+        // Récup et affichage les Sports
         if (url.equals("/la2028/ServletSite/lister")) {
             ArrayList<Site> lesSites = DaoSite.getLesSites(cnx);
             request.setAttribute("pLesSites", lesSites);
             //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );
             getServletContext().getRequestDispatcher("/vues/site/listerSites.jsp").forward(request, response);
         }
+
+        if(url.equals("/la2028/ServletSite/consulter"))
+        {
+            int idSite = Integer.parseInt((String)request.getParameter("idSite"));
+            Site e = DaoSite.getSiteById(cnx, idSite);
+            request.setAttribute("pSite", e);
+            ArrayList<Sport> lesSports = DaoSite.getSportBySiteId(cnx, idSite);
+            request.setAttribute("pLesSports", lesSports);
+            //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );
+            getServletContext().getRequestDispatcher("/vues/Site/consulterSite.jsp").forward(request, response);
+        }
+        
     }
 }

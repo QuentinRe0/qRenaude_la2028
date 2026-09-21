@@ -7,11 +7,22 @@ public class Sport {
     private String nom ;
     private ArrayList<Athlete> lesAthletes ;
     private ArrayList<Epreuve> lesEpreuves ;
+    private  Site site;
 
 
     public Sport() {
         this.id = id;
         this.nom = nom;
+    }
+
+    public Sport(int id) {
+
+    }
+
+    public Sport(int id, String nom, ArrayList<Athlete> lesAthletes, ArrayList<Epreuve> lesEpreuves, Site site) {
+        this.id = id;
+        this.nom = nom;
+        this.site = site;
     }
 
     public int getId() {
@@ -52,6 +63,14 @@ public class Sport {
 
     public void setLesEpreuves(ArrayList<Epreuve> lesEpreuves) {
         this.lesEpreuves = lesEpreuves;
+    }
+
+    public Site getSite() {
+        return site;
+    }
+
+    public void setSite(Site site) {
+        this.site = site;
     }
 }
 

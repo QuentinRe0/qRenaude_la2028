@@ -23,6 +23,7 @@ public class Athlete {
     private LocalDate dateNaissfr ;
     private int age;
     private  Sport sport;
+    private String photo ;
     public Athlete() {
     }
 
@@ -105,6 +106,14 @@ public class Athlete {
 
     public void setSport(Sport sport) {
         this.sport = sport;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }
 

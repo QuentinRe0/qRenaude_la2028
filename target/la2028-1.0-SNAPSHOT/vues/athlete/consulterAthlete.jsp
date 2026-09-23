@@ -56,6 +56,8 @@
                 </tr>
             <tr>
                 <td>Pays : </td><td><%  out.println(a.getPays().getNom());%></td>
+                <%  out.println("<img src="+request.getContextPath()+a.getPays().getPhoto()+">");%>
+
             </tr>
         </table>
 </html>

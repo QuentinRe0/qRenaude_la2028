@@ -7,7 +7,7 @@ public class Sport {
     private String nom ;
     private ArrayList<Athlete> lesAthletes ;
     private ArrayList<Epreuve> lesEpreuves ;
-    private  Site site;
+    private  ArrayList<Site> lesSites;
 
 
     public Sport() {
@@ -19,11 +19,6 @@ public class Sport {
 
     }
 
-    public Sport(int id, String nom, ArrayList<Athlete> lesAthletes, ArrayList<Epreuve> lesEpreuves, Site site) {
-        this.id = id;
-        this.nom = nom;
-        this.site = site;
-    }
 
     public int getId() {
         return id;
@@ -65,12 +60,12 @@ public class Sport {
         this.lesEpreuves = lesEpreuves;
     }
 
-    public Site getSite() {
-        return site;
+    public ArrayList<Site> getLesSites() {
+        return lesSites;
     }
 
-    public void setSite(Site site) {
-        this.site = site;
+    public void setLesSites(ArrayList<Site> lesSites) {
+        this.lesSites = lesSites;
     }
 }
 

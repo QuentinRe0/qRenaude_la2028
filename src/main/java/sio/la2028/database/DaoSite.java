@@ -76,9 +76,11 @@ public class DaoSite {
 
         ArrayList<Sport> lesSports = new ArrayList<>();
         try{
-            requeteSql = cnx.prepareStatement("select s.id as s_id, s.nom as s_nom "+
-                    " from sport s inner join site si " +
-                    " on s.site_id = si.id " +
+            requeteSql = cnx.prepareStatement("select sp.sport_id as s_sport_id, sp.site_id as sp_site_id, s.id as s_id, s.nom as s_nom "+
+                    " from `sport-site` sp inner join sport s " +
+                    " on sp.sport_id = s.id " +
+                    " inner join site si " +
+                    " on sp.site_id = si.id " +
                     " where si.id = ? ");
 
             //System.out.println("REQ="+ requeteSql);

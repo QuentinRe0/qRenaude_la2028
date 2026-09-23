@@ -34,7 +34,7 @@
                 Athlete a = (Athlete)request.getAttribute("pAthlete");
         %>
         <h1><%  out.println(a.getNom()); %></h1>
-        <%  out.println("<img src="+request.getContextPath()+a.getPhoto()+">");%><
+        <%  out.println("<img src="+request.getContextPath()+a.getPhoto()+">");%>
             
                          
             <table>

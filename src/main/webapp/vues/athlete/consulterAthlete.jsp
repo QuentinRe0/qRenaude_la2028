@@ -10,6 +10,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>LOS ANGELES 2028</title>
     </head>
@@ -19,15 +20,27 @@
         <title>LOS ANGELES 2028</title>
     </head>
     <body>
+
+    <div class="navbar">
+        <a  href ='../ServletAthlete/lister' class="navbar-brand" href=".">Système de gestion des athlètes</a>
+        <a  href ='../ServletEpreuve/lister' class="navbar-brand" href=".">Système de gestion des épreuves</a>
+        <a  href ='../ServletPays/lister' class="navbar-brand" href=".">Système de gestion des pays</a>
+        <a  href ='../ServletSite/lister' class="navbar-brand" href=".">Système de gestion des sites</a>
+        <a  href ='../ServletSport/lister' class="navbar-brand" href=".">Système de gestion des sports</a>
+    </div>
+
+
         <%
                 Athlete a = (Athlete)request.getAttribute("pAthlete");
         %>
-        <h1><%  out.println(a.getNom());%></h1>
+        <h1><%  out.println(a.getNom()); %></h1>
+        <%  out.println("<img src="+request.getContextPath()+a.getPhoto()+">");%><
             
                          
             <table>
+
             <tr>
-                <td>Id: </td><td><%  out.println(a.getId());%></td>
+                <td>Id: </td><td><%  out.println(a.getId()); %></td>
             </tr>
                 <tr>
                     <td>Prénom: </td><td><%  out.println(a.getPrenom());%></td>

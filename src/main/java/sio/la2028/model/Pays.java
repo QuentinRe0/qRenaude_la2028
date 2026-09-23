@@ -14,6 +14,7 @@ public class Pays {
     private int id;
     private String nom ;
     private String code ;
+    private String photo ;
     private ArrayList<Athlete> lesAthletes ;
 
     public Pays() {
@@ -72,5 +73,13 @@ public class Pays {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }

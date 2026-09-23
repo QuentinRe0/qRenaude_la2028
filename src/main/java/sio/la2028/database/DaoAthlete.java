@@ -28,7 +28,7 @@ public class DaoAthlete {
         
         ArrayList<Athlete> lesAthletes = new ArrayList<Athlete>();
         try{
-            requeteSql = cnx.prepareStatement("select a.id as a_id, a.prenom as a_prenom, a.nom as a_nom, a.date_naiss as a_dateNaiss, p.id as p_id, p.nom as p_nom,  s.id as s_id, s.nom as s_nom " +
+            requeteSql = cnx.prepareStatement("select a.id as a_id, a.prenom as a_prenom, a.nom as a_nom, a.date_naiss as a_dateNaiss, a.photo as a_photo, p.id as p_id, p.nom as p_nom,  s.id as s_id, s.nom as s_nom " +
                         " from athlete a inner join sport s " +
                         " on a.sport_id = s.id " +
                         " inner join pays p " +
@@ -43,6 +43,7 @@ public class DaoAthlete {
                    a.setNom(resultatRequete.getString("a_nom"));
                    a.setPrenom(resultatRequete.getString("a_prenom"));
                    a.setDateNaiss(resultatRequete.getObject("a_dateNaiss", LocalDate.class));
+                   a.setPhoto(resultatRequete.getString("a_photo"));
                     
                    Pays p = new Pays();
                    p.setId(resultatRequete.getInt("p_id"));
@@ -72,7 +73,7 @@ public class DaoAthlete {
         
         Athlete a = new Athlete();
         try{
-            requeteSql = cnx.prepareStatement("select a.id as a_id, a.prenom as a_prenom, a.nom as a_nom, a.date_naiss as a_dateNaiss,   p.id as p_id, p.nom as p_nom,  s.id as s_id, s.nom as s_nom " +
+            requeteSql = cnx.prepareStatement("select a.id as a_id, a.prenom as a_prenom, a.nom as a_nom, a.date_naiss as a_dateNaiss, a.photo as a_photo,   p.id as p_id, p.nom as p_nom,  s.id as s_id, s.nom as s_nom " +
                          " from athlete a inner join pays p " +
                          " on a.pays_id = p.id " +
                     " inner join sport s " +
@@ -88,6 +89,7 @@ public class DaoAthlete {
                    a.setNom(resultatRequete.getString("a_nom"));
                    a.setPrenom(resultatRequete.getString("a_prenom"));
                    a.setDateNaiss(resultatRequete.getObject("a_dateNaiss", LocalDate.class));
+                   a.setPhoto(resultatRequete.getString("a_photo"));
                     
                    Pays p = new Pays();
                    p.setId(resultatRequete.getInt("p_id"));

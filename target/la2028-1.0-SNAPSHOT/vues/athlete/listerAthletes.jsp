@@ -35,7 +35,11 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a  href ='../ServletAthlete/lister' class="navbar-brand" href=".">Système de gestion des athlètes</a>
+                <a  href ='../ServletAthlete/lister' class="navbar-brand" href=".">Système de gestion des athlètes</a>
+                <a  href ='../ServletEpreuve/lister' class="navbar-brand" href=".">Système de gestion des épreuves</a>
+                <a  href ='../ServletPays/lister' class="navbar-brand" href=".">Système de gestion des pays</a>
+                <a  href ='../ServletSite/lister' class="navbar-brand" href=".">Système de gestion des sites</a>
+                <a  href ='../ServletSport/lister' class="navbar-brand" href=".">Système de gestion des sports</a>
 			</div>
 		</div>
 	</nav>

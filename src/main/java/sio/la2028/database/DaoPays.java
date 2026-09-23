@@ -67,6 +67,7 @@ public class DaoPays {
                 p.setId(resultatRequete.getInt("id"));
                 p.setNom(resultatRequete.getString("nom"));
                 p.setCode(resultatRequete.getString("code"));
+                p.setPhoto(resultatRequete.getString("photo"));
 
 
             }

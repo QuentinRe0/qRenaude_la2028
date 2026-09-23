@@ -28,6 +28,8 @@
         %>
 <h1><%  out.println(p.getNom());%></h1>
 
+  <%  out.println("<img src="+request.getContextPath()+p.getPhoto()+">");%>
+
 
 <table>
   <tr>

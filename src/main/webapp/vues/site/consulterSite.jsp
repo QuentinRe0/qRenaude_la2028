@@ -33,6 +33,8 @@
                 Site s = (Site) request.getAttribute("pSite");
         %>
 <h1><%  out.println(s.getNom());%></h1>
+    <%  out.println("<img src="+request.getContextPath()+s.getPhoto()+">");%>
+
 
 
 <table>

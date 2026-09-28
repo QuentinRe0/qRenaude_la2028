@@ -104,7 +104,7 @@ public class DaoSport {
     }
 
 
-    public static Sport addSport(Connection connection, Sport ath){
+    public static Sport addSport(Connection connection, Sport spo){
         int idGenere = -1;
         try
         {
@@ -113,8 +113,8 @@ public class DaoSport {
             // la paramètre RETURN_GENERATED_KEYS est ajouté à la requête afin de pouvoir récupérer l'id généré par la bdd (voir ci-dessous)
             // supprimer ce paramètre en cas de requête sans auto_increment.
             requeteSql=connection.prepareStatement("INSERT INTO sport (nom)\n" +
-                    "VALUES (?,?)", requeteSql.RETURN_GENERATED_KEYS );
-            requeteSql.setString(1, ath.getNom());
+                    "VALUES (?)", requeteSql.RETURN_GENERATED_KEYS );
+            requeteSql.setString(1, spo.getNom());
 
             /* Exécution de la requête */
             requeteSql.executeUpdate();
@@ -123,9 +123,9 @@ public class DaoSport {
             resultatRequete = requeteSql.getGeneratedKeys();
             while ( resultatRequete.next() ) {
                 idGenere = resultatRequete.getInt( 1 );
-                ath.setId(idGenere);
+                spo.setId(idGenere);
 
-                ath = DaoSport.getSportById(connection, ath.getId());
+                spo = DaoSport.getSportById(connection, spo.getId());
             }
 
 
@@ -135,6 +135,6 @@ public class DaoSport {
             e.printStackTrace();
             //out.println("Erreur lors de l’établissement de la connexion");
         }
-        return ath ;
+        return spo ;
     }
 }

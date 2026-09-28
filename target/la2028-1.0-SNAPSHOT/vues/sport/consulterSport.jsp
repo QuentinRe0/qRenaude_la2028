@@ -23,6 +23,8 @@
     <a  href ='../ServletSite/lister' class="navbar-brand" href=".">Système de gestion des sites</a>
     <a  href ='../ServletSport/lister' class="navbar-brand" href=".">Système de gestion des sports</a>
 </div>
+<div class="container">
+
 
     <%
                 Sport s = (Sport) request.getAttribute("pSport");
@@ -35,6 +37,6 @@
     <tr>
         <td>Id: </td><td><%  out.println(s.getId());%></td>
     </tr>
-
 </table>
+</div>
 </html>

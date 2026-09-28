@@ -22,6 +22,8 @@
   <a  href ='../ServletSite/lister' class="navbar-brand" href=".">Système de gestion des sites</a>
   <a  href ='../ServletSport/lister' class="navbar-brand" href=".">Système de gestion des sports</a>
 </div>
+<div class="container">
+
 
   <%
                 Pays p = (Pays)request.getAttribute("pPays");
@@ -39,4 +41,5 @@
     <td>Code: </td><td><%  out.println(p.getCode());%></td>
   </tr>
 </table>
+</div>
 </html>

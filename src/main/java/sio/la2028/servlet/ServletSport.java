@@ -20,6 +20,7 @@ import sio.la2028.database.DaoAthlete;
 import sio.la2028.database.DaoPays;
 import sio.la2028.database.DaoSport;
 import sio.la2028.form.FormAthlete;
+import sio.la2028.form.FormSport;
 import sio.la2028.model.Athlete;
 import sio.la2028.model.Pays;
 import sio.la2028.model.Sport;
@@ -114,6 +115,13 @@ public class ServletSport extends HttpServlet {
             //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );
             getServletContext().getRequestDispatcher("/vues/sport/listerAthleteBySport.jsp").forward(request, response);
         }
+
+        if(url.equals("/la2028/ServletSport/ajouter"))
+        {
+            ArrayList<Sport> lesSport = DaoSport.getLesSports(cnx);
+            request.setAttribute("pLesSport", lesSport);
+            this.getServletContext().getRequestDispatcher("/vues/sport/ajouterSport.jsp" ).forward( request, response );
+        }
     }
 
     /**
@@ -124,6 +132,44 @@ public class ServletSport extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+
+        FormSport form = new FormSport();
+
+        /* Appel au traitement et à la validation de la requête, et récupération du bean en résultant */
+        Sport spo = form.ajouterSport(request);
+
+        /* Stockage du formulaire et de l'objet dans l'objet request */
+        request.setAttribute( "form", form );
+        request.setAttribute( "pSport", spo );
+
+        if (form.getErreurs().isEmpty()){
+            Sport sportInsere =  DaoSport.addSport(cnx, spo);
+            if (sportInsere != null ){
+                request.setAttribute( "pSport", sportInsere );
+                this.getServletContext().getRequestDispatcher("/vues/sport/consulterSport.jsp" ).forward( request, response );
+            }
+            else
+            {
+                // Cas oùl'insertion en bdd a échoué
+                //renvoyer vers une page d'erreur
+            }
+
+        }
+        else
+        {
+            // il y a des erreurs. On réaffiche le formulaire avec des messages d'erreurs
+
+            this.getServletContext().getRequestDispatcher("/vues/sport/ajouterSport.jsp" ).forward( request, response );
+        }
+
+
+    }
+
 
     /**
      * Returns a short description of the servlet.

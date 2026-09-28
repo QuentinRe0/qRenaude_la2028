@@ -30,6 +30,9 @@
     </div>
 
 
+    <div class="container">
+
+
         <%
                 Athlete a = (Athlete)request.getAttribute("pAthlete");
         %>
@@ -60,4 +63,5 @@
 
             </tr>
         </table>
+    </div>
 </html>

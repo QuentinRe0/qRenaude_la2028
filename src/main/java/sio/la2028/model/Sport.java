@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Sport {
     private int id;
     private String nom ;
+    private String photo ;
     private ArrayList<Athlete> lesAthletes ;
     private ArrayList<Epreuve> lesEpreuves ;
     private  ArrayList<Site> lesSites;
@@ -19,6 +20,12 @@ public class Sport {
 
     }
 
+
+    public Sport(int id, String nom, String photo) {
+        this.id = id;
+        this.nom = nom;
+        this.photo = photo;
+    }
 
     public int getId() {
         return id;
@@ -66,6 +73,14 @@ public class Sport {
 
     public void setLesSites(ArrayList<Site> lesSites) {
         this.lesSites = lesSites;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }
 

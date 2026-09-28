@@ -28,6 +28,7 @@
                 Sport s = (Sport) request.getAttribute("pSport");
         %>
 <h1><%  out.println(s.getNom());%></h1>
+    <%  out.println("<img src="+request.getContextPath()+s.getPhoto()+">");%>
 
 
 <table>

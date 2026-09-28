@@ -58,6 +58,8 @@ public class DaoSport {
 
                 s.setId(resultatRequete.getInt("id"));
                 s.setNom(resultatRequete.getString("nom"));
+                s.setPhoto(resultatRequete.getString("photo"));
+
 
             }
 

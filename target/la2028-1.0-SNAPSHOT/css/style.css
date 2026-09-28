@@ -1,68 +1,150 @@
+/* --- VARIABLES (Couleurs inspirées de LA 2028) --- */
+:root {
+    --la-black: #000000;
+    --la-white: #ffffff;
+    --la-sunset-1: #ff007b; /* Magenta vibrant */
+    --la-sunset-2: #ff7b00; /* Orange vibrant */
+    --la-cyan: #00e5ff;     /* Bleu électrique */
+    --bg-light: #f4f7f9;
+    --text-dark: #1a1a1a;
+    --text-muted: #555555;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    /* Typographie moderne et sans empattement */
+    font-family: 'Inter', 'Montserrat', system-ui, -apple-system, sans-serif;
     margin: 0;
-    padding: 0 5px; /* Ajout de 5px de padding à gauche et à droite */
-    background-color: #ffffff;
-    color: #333333;
+    padding: 0 5px; /* Les 5px conservés sur les côtés */
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
 }
 
+/* --- NAVBAR MODERNISÉE --- */
 .navbar {
-    background-color: #2b2b2b;
-    padding: 15px 30px;
-    font-size: 1.1rem;
+    background-color: var(--la-black);
+    padding: 15px 40px;
     display: flex;
-    gap: 20px;
+    align-items: center;
+    justify-content: space-between; /* Pousse le logo à gauche et les liens à droite */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    position: sticky; /* Garde la navbar en haut au scroll */
+    top: 0;
+    z-index: 1000;
 }
 
-.container {
-    width: 80%;
-    margin: 40px auto;
+/* Gestion du logo dans la navbar */
+.navbar .logo {
+    height: 50px; /* Taille du logo */
+    width: auto;
+    object-fit: contain;
 }
 
-h1 {
-    font-size: 2rem;
-    font-weight: normal;
-    margin-bottom: 30px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.95rem;
-}
-
-th {
-    text-align: left;
-    padding: 12px 17px;
-    font-weight: bold;
-    border-bottom: 1px solid #e0e0e0;
-}
-
-td {
-    padding: 12px 17px; /* 12px en haut/bas, et 17px (12 + 5) à gauche/droite */
-    border-bottom: 1px solid #f0f0f0;
-}
-
-tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-a {
-    color: #0056b3;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
+/* Conteneur des liens dans la navbar */
+.navbar .nav-links {
+    display: flex;
+    gap: 30px;
 }
 
 .navbar a {
-    color: #a8a8a8;
+    color: var(--la-white);
     text-decoration: none;
-    transition: color 0.3s ease;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
 }
 
 .navbar a:hover {
-    color: #ffffff;
+    color: var(--la-cyan);
+    transform: translateY(-2px); /* Petit effet de soulèvement */
+}
+
+/* --- CONTENEUR PRINCIPAL --- */
+.container {
+    width: 85%;
+    max-width: 1200px;
+    margin: 60px auto;
+    background-color: var(--la-white);
+    padding: 40px;
+    border-radius: 16px; /* Bords arrondis modernes */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05); /* Ombre douce */
+}
+
+/* --- TITRES --- */
+h1 {
+    font-size: 2.8rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    margin-bottom: 40px;
+    /* Effet de texte en dégradé inspiré du "A" dynamique de LA28 */
+    background: linear-gradient(45deg, var(--la-sunset-1), var(--la-sunset-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* --- TABLEAU --- */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 1rem;
+    border-radius: 12px;
+    overflow: hidden; /* Permet d'appliquer les bords arrondis aux coins du tableau */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+th {
+    background-color: var(--la-black);
+    color: var(--la-white);
+    text-align: left;
+    padding: 18px 20px;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+td {
+    padding: 16px 20px;
+    border-bottom: 1px solid #eeeeee;
+    color: var(--text-muted);
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+tr:last-child td {
+    border-bottom: none; /* Enlève la ligne sous la dernière rangée */
+}
+
+tr:nth-child(even) {
+    background-color: #fcfcfc;
+}
+
+/* Effet moderne au survol des lignes */
+tr:hover td {
+    background-color: rgba(0, 229, 255, 0.05); /* Léger fond cyan */
+    color: var(--text-dark);
+}
+
+/* --- LIENS GÉNÉRAUX --- */
+a {
+    color: var(--la-sunset-1);
     text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--la-sunset-2);
+    text-decoration: underline;
+}
+
+/* --- IMAGES --- */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px; /* Bords légèrement arrondis pour les images */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }

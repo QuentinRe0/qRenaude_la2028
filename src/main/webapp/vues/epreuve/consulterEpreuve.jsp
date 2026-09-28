@@ -32,6 +32,9 @@
     <a  href ='../ServletSport/lister' class="navbar-brand" href=".">Système de gestion des sports</a>
 </div>
 
+<div class="container">
+
+
     <%
                 Epreuve e = (Epreuve) request.getAttribute("pEpreuve");
         %>
@@ -92,5 +95,5 @@
     </tr>
     </tbody>
 </table>
-
+</div>
 </html>

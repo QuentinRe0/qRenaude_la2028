@@ -6,6 +6,7 @@ public class Site {
     private int id;
     private String nom ;
     private String emplacement ;
+    private String photo ;
     private ArrayList<Sport> lesSports ;
 
     public Site() {
@@ -44,5 +45,13 @@ public class Site {
 
     public void setLesSports(ArrayList<Sport> lesSports) {
         this.lesSports = lesSports;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }

@@ -7,6 +7,7 @@ public class Site {
     private String nom ;
     private String emplacement ;
     private String photo ;
+    private  Sport sport;
     private ArrayList<Sport> lesSports ;
 
     public Site() {
@@ -53,5 +54,13 @@ public class Site {
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    public Sport getSport() {
+        return sport;
+    }
+
+    public void setSport(Sport sport) {
+        this.sport = sport;
     }
 }

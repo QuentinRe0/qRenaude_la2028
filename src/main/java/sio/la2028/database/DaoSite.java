@@ -1,6 +1,7 @@
 package sio.la2028.database;
 
 import sio.la2028.model.Athlete;
+import sio.la2028.model.Epreuve;
 import sio.la2028.model.Site;
 import sio.la2028.model.Sport;
 
@@ -104,6 +105,39 @@ public class DaoSite {
             System.out.println("La requête de getLesPompiers e généré une erreur");
         }
         return lesSports;
+    }
+
+
+    public static Site addSite(Connection connection, Site sit) {
+        int idGenere = -1;
+        PreparedStatement requeteSql = null;
+        ResultSet resultatRequete = null;
+
+        try {
+            requeteSql = connection.prepareStatement("INSERT INTO site (nom) VALUES (?)", PreparedStatement.RETURN_GENERATED_KEYS);
+            requeteSql.setString(1, sit.getNom());
+
+            requeteSql.executeUpdate();
+
+            resultatRequete = requeteSql.getGeneratedKeys();
+            if (resultatRequete.next()) {
+                idGenere = resultatRequete.getInt(1);
+                sit.setId(idGenere);
+            }
+
+            if (idGenere > 0 && sit.getSport() != null && sit.getSport().getId() > 0) {
+
+                PreparedStatement requeteJointure = connection.prepareStatement("INSERT INTO `sport-site` (site_id, sport_id) VALUES (?, ?)");
+                requeteJointure.setInt(1, sit.getId());
+                requeteJointure.setInt(2, sit.getSport().getId());
+
+                requeteJointure.executeUpdate();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return sit;
     }
 
 }

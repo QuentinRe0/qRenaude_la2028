@@ -13,10 +13,9 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import sio.la2028.database.DaoAthlete;
-import sio.la2028.database.DaoEpreuve;
-import sio.la2028.model.Athlete;
-import sio.la2028.model.Epreuve;
+import sio.la2028.database.*;
+import sio.la2028.form.FormEpreuve;
+import sio.la2028.model.*;
 
 
 public class ServletEpreuve extends HttpServlet {
@@ -33,7 +32,7 @@ public class ServletEpreuve extends HttpServlet {
         try {
             System.out.println("INIT SERVLET=" + cnx.getSchema());
         } catch (SQLException ex) {
-            Logger.getLogger(sio.la2028.servlet.ServletEpreuve.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletEpreuve.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -98,7 +97,42 @@ public class ServletEpreuve extends HttpServlet {
             getServletContext().getRequestDispatcher("/vues/epreuve/consulterEpreuve.jsp").forward(request, response);
         }
 
+        if(url.equals("/la2028/ServletEpreuve/ajouter"))
+        {
+            ArrayList<Sport> lesSports = DaoSport.getLesSports(cnx);
+            request.setAttribute("pLesSports", lesSports);
+            this.getServletContext().getRequestDispatcher("/vues/epreuve/ajouterEpreuve.jsp" ).forward( request, response );
+        }
 
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+
+        FormEpreuve form = new FormEpreuve();
+
+        /* Appel au traitement et à la validation de la requête, et récupération du bean en résultant */
+        Epreuve epr = form.ajouterEpreuve(request);
+
+        /* Stockage du formulaire et de l'objet dans l'objet request */
+        request.setAttribute( "form", form );
+        request.setAttribute( "pEpreuve", epr );
+
+        if (form.getErreurs().isEmpty()){
+            Epreuve EpreuveInsere =  DaoEpreuve.addEpreuve(cnx, epr);
+            if (EpreuveInsere != null && EpreuveInsere.getId() > 0) {
+                response.sendRedirect(request.getContextPath() + "/ServletEpreuve/consulter?idEpreuve=" + EpreuveInsere.getId());
+            }
+        }
+        else
+        {
+            // il y a des erreurs. On réaffiche le formulaire avec des messages d'erreurs
+            ArrayList<Sport> lesSports = DaoSport.getLesSports(cnx);
+            request.setAttribute("pLesSports", lesSports);
+            this.getServletContext().getRequestDispatcher("/vues/epreuve/ajouterEpreuve.jsp" ).forward( request, response );
+        }
     }
 
     @Override

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3307
--- Généré le : lun. 12 oct. 2026 à 09:30
+-- Généré le : lun. 12 oct. 2026 à 09:56
 -- Version du serveur : 11.5.2-MariaDB
 -- Version de PHP : 8.3.14
 
@@ -353,7 +353,7 @@ CREATE TABLE IF NOT EXISTS `site` (
 
 INSERT INTO `site` (`id`, `nom`, `emplacement`, `photo`) VALUES
 (1, ' SoFi Stadium ', '1001 S. Stadium Drive\r\nInglewood, CA 90301', '/images/site/SoFi-Stadium.jpg'),
-(2, ' Intuit Dome ', '3939 West 102nd Street\r\nInglewood, CA 90303', NULL);
+(2, ' Intuit Dome ', '3939 West 102nd Street\r\nInglewood, CA 90303', '/images/site/Intuit_Dome.jpg');
 
 -- --------------------------------------------------------
 
@@ -376,7 +376,7 @@ CREATE TABLE IF NOT EXISTS `sport` (
 --
 
 INSERT INTO `sport` (`id`, `nom`, `photo`, `site_id`) VALUES
-(1, 'judo', '/images/sport/judo.avif', NULL),
+(1, 'judo', '/images/sport/Judo.avif', NULL),
 (2, 'natation', '/images/sport/natation.jpg', 1),
 (3, 'gym', NULL, NULL),
 (4, 'Athlétisme', NULL, NULL),

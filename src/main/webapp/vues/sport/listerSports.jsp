@@ -44,6 +44,8 @@
       <tr>
         <th>id</th>
         <th>nom</th>
+        <th>athlétes</th>
+
       </tr>
       </thead>
       <tbody>

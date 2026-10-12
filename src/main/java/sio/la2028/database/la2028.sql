@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3307
--- Généré le : lun. 12 oct. 2026 à 09:22
+-- Généré le : lun. 12 oct. 2026 à 09:30
 -- Version du serveur : 11.5.2-MariaDB
 -- Version de PHP : 8.3.14
 
@@ -103,8 +103,8 @@ CREATE TABLE IF NOT EXISTS `pays` (
 --
 
 INSERT INTO `pays` (`id`, `code`, `nom`, `photo`) VALUES
-(1, 'FRA', 'France', 'images/pays/France.webp'),
-(2, 'USA', 'United States of America', 'images/pays/United-States.webp'),
+(1, 'FRA', 'France', '/images/pays/France.webp'),
+(2, 'USA', 'United States of America', '/images/pays/United-States.webp'),
 (3, 'ALB', 'Albania', NULL),
 (4, 'ALG', 'Algeria', NULL),
 (5, 'GER', 'Germany', NULL),
